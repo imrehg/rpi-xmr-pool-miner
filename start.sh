@@ -2,7 +2,7 @@
 
 function longsleep() {
     while : ; do
-        echo "idling..."
+        echo "Idling..."
         sleep 60
     done
 }
@@ -26,8 +26,12 @@ else
     echo "EMAIL: ${EMAIL}"
 fi
 
+devicename=$(hostname)
+echo "WORKER: ${devicename}"
+
 ./minerd \
    -a cryptonight \
-   -o "stratum+tcp://${POOL_URL}"
+   -o "stratum+tcp://${POOL_URL}" \
    -u "${MONERO_ADDRESS}" \
-   -p "testing:${EMAIL}"
+   -p "${devicename}:${EMAIL}" \
+   -t "${THREAD-4}"

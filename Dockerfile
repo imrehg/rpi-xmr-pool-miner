@@ -14,11 +14,10 @@ RUN apt-get update \
 RUN    git clone https://github.com/lucasjones/cpuminer-multi.git \
     && cd cpuminer-multi \
     && ./autogen.sh \
-    && ./configure CFLAGS="-march=native -mfpu=neon" \
+    && ./configure CFLAGS="-O3 -mcpu=cortex-a53  -mfpu=neon-fp-armv8 -funsafe-math-optimizations" \
     && make -j
 
 FROM resin/raspberrypi3-debian:stretch
-
 WORKDIR /usr/src/app
 
 RUN apt-get update \
