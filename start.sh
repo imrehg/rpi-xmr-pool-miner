@@ -29,7 +29,7 @@ fi
 devicename=$(hostname)
 echo "WORKER: ${devicename}"
 
-./minerd \
+minerd \
    -a cryptonight \
    -o "stratum+tcp://${POOL_URL}" \
    -u "${MONERO_ADDRESS}" \
