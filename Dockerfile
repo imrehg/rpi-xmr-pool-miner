@@ -14,13 +14,12 @@ RUN apt-get update \
 RUN    git clone https://github.com/lucasjones/cpuminer-multi.git \
     && cd cpuminer-multi \
     && ./autogen.sh \
-    && ./configure CFLAGS="-march=native" \
-    && make
+    && ./configure CFLAGS="-march=native -mfpu=neon" \
+    && make -j
 
 FROM resin/raspberrypi3-debian:stretch
 
 WORKDIR /usr/src/app
-ENV INITSYSTEM on
 
 RUN apt-get update \
     && apt-get install -qy \
