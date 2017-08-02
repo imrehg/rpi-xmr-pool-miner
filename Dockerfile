@@ -14,7 +14,7 @@ RUN apt-get update \
 RUN    git clone https://github.com/lucasjones/cpuminer-multi.git \
     && cd cpuminer-multi \
     && ./autogen.sh \
-    && ./configure CFLAGS="-O3 -mcpu=cortex-a53 -mfloat-abi=hard -mfpu=neon-fp-armv8 -mneon-for-64bits" \
+    && ./configure CFLAGS="-O3 -mcpu=cortex-a53 -mfloat-abi=hard -mfpu=neon-fp-armv8 -mneon-for-64bits -mtune=cortex-a53" \
     && make -j
 
 FROM resin/raspberrypi3-debian:stretch
